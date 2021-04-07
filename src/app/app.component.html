@@ -1,0 +1,30 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" routerLink="/">
+    <img src="assets/img/molise-logo.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+    &nbsp;MoliseCoin
+  </a>
+
+  <div>
+    <button routerLink="/new/transaction/pending" class="btn btn-outline-light" *ngIf="thereArePendingTransactions()">
+      Transazioni Pendenti
+      <span class="badge badge-light">{{blockchain.pendingTransactions.length}}</span>
+    </button>
+    &nbsp;
+    <button routerLink="/settings" class="btn btn-outline-light">
+      Impostazioni
+    </button>
+    &nbsp;
+    <button routerLink="/new/transaction" class="btn btn-outline-light">
+      Crea Transazione
+    </button>
+  </div>
+</nav>
+
+<br>
+
+<router-outlet></router-outlet>
+
+<footer class="text-muted text-center" style="margin-top: 150px;">
+  <small>Aldo Manco 159165 - Unimol<br>
+  <a href="https://github.com/Savjee/savjeecoin-frontend" target="_blank"></a></small>
+</footer>

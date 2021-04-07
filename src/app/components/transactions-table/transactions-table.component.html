@@ -1,0 +1,48 @@
+<p *ngIf="transactions.length === 0">Questo blocco non ha transazioni.</p>
+
+<table class="table table-hover table-striped" *ngIf="transactions.length > 0">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Da</th>
+      <th scope="col">A</th>
+      <th scope="col">Quantità</th>
+      <th scope="col">Timestamp</th>
+      <th scope="col">Valido?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let tx of transactions; index as index">
+      <td>{{index}}</td>
+      <td class="text-truncate" style="max-width: 100px;">
+
+        <a [routerLink]="['/wallet', tx.fromAddress]" *ngIf="tx.fromAddress !== null">{{tx.fromAddress}}</a>
+
+        <span *ngIf="tx.fromAddress === null">MoliseCoin</span>
+
+        <span class="text-muted" *ngIf="blockchainService.addressIsFromCurrentUser(tx.fromAddress)">
+          <br><small>(Il tuo indirizzo!)</small>
+        </span>
+      </td>
+      <td class="text-truncate" style="max-width: 100px;">
+          <a [routerLink]="['/wallet', tx.toAddress]">{{tx.toAddress}}</a>
+
+          <span class="text-muted" *ngIf="blockchainService.addressIsFromCurrentUser(tx.toAddress)">
+            <br><small>(Il tuo indirizzo)</small>
+          </span>
+      </td>
+      <td>
+        {{tx.amount}}
+        <span *ngIf="tx.fromAddress === null" class="text-muted"><br><small>(Mining Reward)</small></span>
+      </td>
+      <td>
+        {{tx.timestamp}}<br>
+        <span class="text-muted"><small>{{tx.timestamp |date:'MMM d, y, HH:mm'}}</small></span>
+      </td>
+      <td style="max-width: 40px;">
+        <span *ngIf="tx.isValid()">✓</span>
+        <span *ngIf="!tx.isValid()">✗</span>
+      </td>
+    </tr>
+  </tbody>
+</table>

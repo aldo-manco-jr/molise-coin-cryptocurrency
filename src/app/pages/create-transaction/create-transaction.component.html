@@ -1,0 +1,33 @@
+<div class="container">
+	<h1>Crea Transazione</h1>
+	<p>Invia delle monete a qualcuno!</p>
+
+	<br>
+
+	<div class="form-group">
+	    <label for="fromAddress">Indirizzo Mittente</label>
+	    <input type="text" class="form-control" id="fromAddress" aria-describedby="fromAddressHelp" [(ngModel)]="ownWalletKey.publicKey" disabled>
+	    <small id="fromAddressHelp" class="form-text text-muted">
+        Questo è il tuo indirizzo di portafoglio. Non puoi cambiarlo perché puoi spendere solo le tue monete.
+	    </small>
+  	</div>
+
+  	<div class="form-group">
+	    <label for="toAddress">Indirizzo Destinatario</label>
+	    <input type="text" class="form-control" id="toAddress" aria-describedby="toAddressHelp" [(ngModel)]="newTx.toAddress">
+	    <small id="toAddressHelp" class="form-text text-muted">
+        L'indirizzo del portafoglio a cui vuoi inviare le monete. Puoi digitare un testo casuale se non sei interessato a recuperare i fondi.
+	    </small>
+  	</div>
+
+  	<div class="form-group">
+	    <label for="amount">Quantità</label>
+	    <input type="number" class="form-control" id="amount" aria-describedby="amountHelp" [(ngModel)]="newTx.amount">
+	    <small id="amountHelp" class="form-text text-muted">
+        Puoi trasferire un importo del massimo valore di quello che possiedi.
+	    </small>
+  	</div>
+
+  	<button (click)="createTransaction()" type="submit" class="btn btn-primary">Firma & Crea la Transazione</button>
+
+</div>

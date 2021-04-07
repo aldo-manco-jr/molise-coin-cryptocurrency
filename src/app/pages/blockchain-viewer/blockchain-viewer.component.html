@@ -1,0 +1,24 @@
+<div class="container">
+	<h1>Blocchi nella Blockchain</h1>
+	<p>Ogni card rappresenta un blocco della blockchain. Premi sul blocco per vedere le transazioni archiviate al suo interno.</p>
+</div>
+
+<div class="container" style="overflow-x: scroll;white-space: nowrap;">
+	<app-block-view
+		*ngFor="let block of blocks"
+		[block]="block"
+		[selectedBlock]="selectedBlock"
+		(click)="showTransactions(block)"
+	></app-block-view>
+</div>
+
+<br><br>
+
+<div class="container">
+	<h1>Transazioni all'interno del blocco {{ getBlockNumber(selectedBlock) }}</h1>
+
+	<app-transactions-table
+		[transactions]="selectedBlock.transactions"
+	></app-transactions-table>
+</div>
+

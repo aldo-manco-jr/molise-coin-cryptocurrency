@@ -1,0 +1,24 @@
+<div class="container">
+	<h1>Dettagli Portafoglio</h1>
+
+	<p style="word-wrap:break-word;">
+		<strong>Indirizzo:</strong>
+		<br>
+		{{walletAddress}}
+	</p>
+
+	<p>
+		<strong>Saldo:</strong>
+		<br>
+		{{ balance }}
+	</p>
+
+	<hr>
+
+	<h1>Transactions</h1>
+	<p *ngIf="transactions.length === 0">Questo portafoglio non ha ancora fatto transazioni.</p>
+	<app-transactions-table
+		[transactions]="transactions"
+		*ngIf="transactions.length > 0"
+	></app-transactions-table>
+</div>

@@ -1,0 +1,27 @@
+<div class="container">
+  <h1>Impostazioni</h1>
+  <p>Impostazioni sul comportamento della blockchain quando vengono create nuove transazioni o blocchi. Le modifiche vengono salvate automaticamente.</p>
+
+  <br>
+
+  <div class="form-group">
+    <label for="difficulty">Difficoltà</label>
+    <input type="number" class="form-control" id="difficulty" aria-describedby="difficultyHelp" [(ngModel)]="blockchain.difficulty">
+    <small id="difficultyHelp" class="form-text text-muted">
+      Il valore 'difficoltà' influenza il tempo impiegato dal processo di mining. Numeri più alti renderanno il mining molto più lento!
+    	<br>Default: 2
+    </small>
+  </div>
+
+  <br>
+
+  <div class="form-group">
+    <label for="miningReward">Mining Reward</label>
+    <input type="number" class="form-control" id="miningReward" aria-describedby="miningRewardHelp" [(ngModel)]="blockchain.miningReward">
+    <small id="miningRewardHelp" class="form-text text-muted">
+      Numero di monete che un minatore riceve per aver creato con successo un nuovo blocco nella blockchain.
+		  <br>Default: 100
+    </small>
+  </div>
+
+</div>
